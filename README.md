@@ -1,5 +1,5 @@
 # Object-detection-with-deep-learning-and-sliding-window
-Introduces an approach for object detection in an image with sliding window. 
+Introduces an approach for object detection in an image with sliding window. <\n>
 The Idea behind this approach is to train a CNN model on images which we want to detect. After that make a sliding window on the image and query the trained model to produce appropriate output. 
 The repository contains three files: make_data.py contains code to preprocess the image and append labels accordingly. In this case, if the file image starts with "trn" then it is assigned the label 1 else 0. The images are then normalized and appended into a numpy array. The numpy array is then saved as a .npy file for the model training. 
 test-model-1.py file contains the code for the CNN model. The model and weights are saved into a .json file and h5 file format. 
