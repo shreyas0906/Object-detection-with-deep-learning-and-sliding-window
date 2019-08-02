@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import os
 from argparse import ArgumentParser
+from renameImages import getLabel
 
 test_images = []
 file_images = []
@@ -11,28 +12,34 @@ train_neg_images = []
 #Specifying the paths to respective folders
 def main(args):
 
-    train_img_label = []
-    testLabels = []
-    test_img_label = []
+    makeData(args.trainData)
+    makeData(args.testData)
 
-# TODO: write a script to rename all the images in a folder to a particular name.
 
-def makeTrainingImages():
-    i = 0
-    for f in os.listdir(args.trainData):
+# TODO: write a script to rename all the images in a folder to a particular name. - completed
+
+def makeData(folder):
+
+    imagesFiles = []
+    imagesLabels = []
+
+    for root in os.walk(folder):
         if f.endswith('.jpeg') or f.endswith('.jpg') or f.endswith('.png'):
             imagesFiles.append(f)
-        if f.split('.')[0][0:3] == 'trn': # assigning the label 1 to the cropped images. Note that the file name differentiates between
-            train_img_label.append(1)#the positive and negative images
+        if f.split('.')[0][0:3] == getLabel(args.trainData):
+            imagesLabels.append(1)#Labeling the images accordi
         else:
-            train_img_label.append(0)# assigning the label 0 to the negative images.
-    trainImgs = np.ndarray((len(file_images), 1, image_width, image_height))/255 # normalizing the image
+            imagesFiles.append(0)# assigning the label 0 to the negative images.
+    trainImgs = np.ndarray((len(os.listdir(args.trainData)), 1, args.objectDim, args.objectDim)) / 255 # normalizing the image
 
-    os.chdir(train_pos_path)
-    for file in file_images:
-        if file.endswith('.jpeg') or file.endswith('.jpg') or file.endswith('.png'):
-            img = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
-            # ret, thresh = cv2.threshold(img, 127, 255, cv2.THRESH_TOZERO)
+
+def makeTestingImages():
+
+    imagesFiles = []
+    imagesLabels = []
+
+    for f in os.listdir(args.testData):
+        if f.endswith('.jpeg') or f.endswith('.jpg') or f.endswith('.png'):
             trainImgs[i] = np.asarray(img)
             i+=1
 
