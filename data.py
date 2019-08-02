@@ -17,20 +17,24 @@ def main(args):
 
 
 # TODO: write a script to rename all the images in a folder to a particular name. - completed
+# TODO: write a script to append all the images to a list and assign labels accordingly.
+
 
 def makeData(folder):
 
     imagesFiles = []
     imagesLabels = []
 
-    for root in os.walk(folder):
-        if f.endswith('.jpeg') or f.endswith('.jpg') or f.endswith('.png'):
-            imagesFiles.append(f)
-        if f.split('.')[0][0:3] == getLabel(args.trainData):
-            imagesLabels.append(1)#Labeling the images accordi
-        else:
-            imagesFiles.append(0)# assigning the label 0 to the negative images.
-    trainImgs = np.ndarray((len(os.listdir(args.trainData)), 1, args.objectDim, args.objectDim)) / 255 # normalizing the image
+    for root, subDir, fileNames in os.walk(folder):
+
+
+    #     if f.endswith('.jpeg') or f.endswith('.jpg') or f.endswith('.png'):
+    #         imagesFiles.append(f)
+    #     if f.split('.')[0][0:3] == getLabel(args.trainData):
+    #         imagesLabels.append(1)#Labeling the images accordi
+    #     else:
+    #         imagesFiles.append(0)# assigning the label 0 to the negative images.
+    # trainImgs = np.ndarray((len(os.listdir(args.trainData)), 1, args.objectDim, args.objectDim)) / 255 # normalizing the image
 
 
 def makeTestingImages():

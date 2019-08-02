@@ -1,26 +1,15 @@
 import os
 from argparse import ArgumentParser
 
-
 def renameFiles(args):
 
     i = 0
-
+    fileList = []
     for imageFile in os.listdir(args.folderName):
         if imageFile.endswith('.jpeg') or imageFile.endswith('.jpg') or imageFile.endswith('.png'):
             os.rename(imageFile, args.label + str(i) + '.jpeg')
+            fileList.append(args.label + str(i) + '.jpeg')
         i += 1
-
-
-def combineData():
-
-
-
-def getLabel(folderName):
-
-    fileList = os.listdir(folderName)
-    return str(fileList[0][0:3])
-
 
 if __name__ == '__main__':
     p = ArgumentParser()
