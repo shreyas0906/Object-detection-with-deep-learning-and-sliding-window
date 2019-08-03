@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import os
 from argparse import ArgumentParser
-from renameImages import getLabel
+import utils
 
 test_images = []
 file_images = []
@@ -88,8 +88,8 @@ def saveData():
 if __name__ =='__main__':
 
         p = ArgumentParser()
-        p.add_argument('trainData', required=True, help='name of training data folder')
-        p.add_argument('testData', required=True, help='name of testing data folder')
+        p.add_argument('trainDir', required=True, help='name of training data folder')
+        p.add_argument('testDir', required=True, help='name of testing data folder')
         p.add_argument('objectDim', required=False, help='size of object to be detected. default=45', default=45)
         args = p.parse_args()
         
