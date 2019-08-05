@@ -12,6 +12,7 @@ from keras.layers.convolutional import MaxPooling2D
 from keras.utils import np_utils
 from keras.callbacks import ModelCheckpoint
 from keras.models import model_from_json
+import tensorflow as tf
 
 img_rows, img_cols = 45,45 # Specifying the dimensions of the image
 test_label = np.load('testing_img_label.npy')# loading the training and testing data

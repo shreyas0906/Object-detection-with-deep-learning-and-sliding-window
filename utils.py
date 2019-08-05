@@ -57,7 +57,7 @@ def createImageList():
 
 def getLabels():
 
-    for dir, subdir, _ in os.walk('train'):
+    for _, subdir, _ in os.walk('train'):
         if len(subdir) != 0:
             return subdir
 
